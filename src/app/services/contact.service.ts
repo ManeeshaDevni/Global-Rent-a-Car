@@ -1,25 +1,22 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactService {
-
-  constructor(private http: HttpClient) { }
-
   getAllContacts() {
-    return this.http.get('http://localhost:8000/api/contactQuarry')
+    throw new Error('Method not implemented.');
   }
 
-  saveContacts(form){
-    const Contact={
-      name:form.get('name').value,
-      email:form.get('email').value,
-      phone_num:form.get('phone_num').value,
-      message:form.get('message').value,
-      Posting_date:form.get('Posting_date').value,
-    }
-    return this.http.post<any>('http://localhost:8000/api/Contacts',Contact);
+  constructor(private httpClient:HttpClient) { }
+
+  getData(){
+    return this.httpClient.get("http://127.0.0.1:8000/api/contacts");
   }
+
+  insertData(data){
+    return this.httpClient.post("http://127.0.0.1:8000/api/addContact", data);
+  }
+  
 }

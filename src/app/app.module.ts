@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,9 +31,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import { ContactsViewComponent } from './components/contacts-view/contacts-view.component';
-import { ViewContactComponent } from './components/view-contact/view-contact.component';
 
-
+const appRoutes: Routes = [
+  { path: '', component:ContactsViewComponent}
+];
 
 
 @NgModule({
@@ -49,12 +51,12 @@ import { ViewContactComponent } from './components/view-contact/view-contact.com
     TestimonialComponent,
     AboutComponent,
     ContactsViewComponent,
-    ViewContactComponent,
    
   ],
   
   imports: [
     BrowserModule,
+    RouterModule.forRoot(appRoutes),
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
